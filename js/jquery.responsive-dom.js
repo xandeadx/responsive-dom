@@ -22,7 +22,8 @@
             insertAfter: null,
             insertBefore: null,
             mediaQuery: '(min-width: 0)', // ...when this media query is true.
-            callback: null                // If provided, the callback will run after DOM updates.
+            callback: null,               // If provided, the callback will run after DOM updates.
+            debounceWait: 100
         }, options);
 
         var sourceEl = this;
@@ -37,7 +38,7 @@
             updateDom();
 
             // ...and again when the window resizes
-            $(window).on('resize.responsiveDom', debounce(updateDom, 100));
+            $(window).on('resize.responsiveDom', debounce(updateDom, settings.debounceWait));
         };
 
         /**
