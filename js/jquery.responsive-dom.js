@@ -72,22 +72,15 @@
                 placeholder = $('<span class="js-responsive-dom-placeholder"/>');
                 sourceEl.after(placeholder);
 
-                // Check if Append or Prepend
-
-                if(settings.appendTo !== null) {
-
-                    // Move element
+                if (settings.appendTo !== null) {
                     $(settings.appendTo).eq(0).append(sourceEl);
                 } else if (settings.prependTo) {
-
-                    // Move element
                     $(settings.prependTo).eq(0).prepend(sourceEl);
                 } else if (settings.insertBefore) {
                     $(settings.insertBefore).eq(0).before(sourceEl);
                 } else if (settings.insertAfter) {
                     $(settings.insertAfter).eq(0).after(sourceEl);
                 }
-
             }
         };
 
