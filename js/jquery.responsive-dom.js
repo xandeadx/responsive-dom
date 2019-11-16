@@ -19,6 +19,8 @@
         var settings = $.extend({
             appendTo: null,             // The provided object will be moved here...
             prependTo: null,
+            insertAfter: null,
+            insertBefore: null,
             mediaQuery: '(min-width: 0)', // ...when this media query is true.
             callback: null                // If provided, the callback will run after DOM updates.
         }, options);
@@ -76,10 +78,14 @@
 
                     // Move element
                     $(settings.appendTo).eq(0).append(sourceEl);
-                } else {
+                } else if (settings.prependTo) {
 
                     // Move element
                     $(settings.prependTo).eq(0).prepend(sourceEl);
+                } else if (settings.insertBefore) {
+                    $(settings.insertBefore).eq(0).before(sourceEl);
+                } else if (settings.insertAfter) {
+                    $(settings.insertAfter).eq(0).after(sourceEl);
                 }
 
             }
